@@ -5,10 +5,20 @@
  */
 package org.matrixlab.jsonbuilder.api;
 
+import java.util.Map;
+
 /**
  *
  * @author alexmylnikov
  */
 public interface Indexer {
+    
+    void index();
+    
+    void index(Map<String, String> prope);
+    
+    void reindex();
+    
+    void reindex(Map<String, String> prope);
     
 }

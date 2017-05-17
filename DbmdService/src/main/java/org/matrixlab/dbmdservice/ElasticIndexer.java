@@ -11,6 +11,6 @@ import org.matrixlab.jsonbuilder.api.Indexer;
  *
  * @author alexmylnikov
  */
-public class ElasticIndexer implements Indexer {
+public class ElasticIndexer {
     
 }
