@@ -5,7 +5,7 @@
  */
 package org.matrixlab.dbmdservice;
 
-import org.matrixlab.jsonbuilder.api.Indexer;
+import org.matrixlab.gmdsdriver.core.Indexer;
 
 /**
  *

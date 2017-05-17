@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.matrixlab.jsonbuilder.api;
+package org.matrixlab.gmdsdriver.core;
 
 import java.util.Map;
 
