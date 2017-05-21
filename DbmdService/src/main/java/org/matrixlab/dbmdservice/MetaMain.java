@@ -19,6 +19,7 @@ import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.TreeFormatter;
 import org.matrixlab.gmdsdriver.core.Commands;
+import org.matrixlab.jsonbuilder.impl.ObjectJson;
 
 /**
  *
@@ -43,17 +44,26 @@ public class MetaMain {
             TreeFormatter tree = new TreeFormatter();                                                   // (3)
 
             if (conn != null) {
-                ObjectId treeId = Utils.metaTreeCommit(repo, tree, conn);                               // (4)
+                ObjectJson dbmdJson = new ObjectJson();
+                ObjectId treeId = Utils.metaTreeCommit(dbmdJson, repo, tree, conn, false);              // (4)
                 ObjectId lastTreeId = Commands.getLastCommitTreeId(repo, lastCommitId);                 // (5)
                 ObjectId commitId = Commands.processCommit(lastCommitId, treeId, repo, lastTreeId);     // (6)
+                
                 if (commitId != null) {
                     List<DiffEntry> list = Diffs.listDiffs(repo, lastTreeId, treeId);                   // (7)
                     if (list != null) {
                         // Simply display the diff between the two commits
                         list.forEach((diff) -> {
+                            // TODO
+                            // Perform indexing of added to commit objects
+//                            System.out.print(dbmdJson.getObjectAsMap());                               // (8) 
+
+                            // Print trace results
                             System.out.println(diff);
                         });
                     }
+                    // Index the whole commit tree 
+//                    System.out.print(dbmdJson.getObjectAsMap());                                        // (9)
                 }
             } else {
                 System.out.println("Metadata not supported");

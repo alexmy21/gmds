@@ -5,12 +5,37 @@
  */
 package org.matrixlab.dbmdservice;
 
+import java.util.Map;
 import org.matrixlab.gmdsdriver.core.Indexer;
 
 /**
  *
  * @author alexmylnikov
  */
-public class ElasticIndexer {
-    
+public class ElasticIndexer implements Indexer {
+
+    @Override
+    public void index() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void index(Map<String, String> prope) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void reindex() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void reindex(Map<String, String> prope) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
+    }
+
 }

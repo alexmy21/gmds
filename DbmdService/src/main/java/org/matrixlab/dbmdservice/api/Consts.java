@@ -11,6 +11,8 @@ package org.matrixlab.dbmdservice.api;
  */
 public interface Consts {
     
+    String OBJECT_ID = "OBJECT_ID";
+    
     String DATABASE = "DATABASE";
     
     String META_REPO_PATH = "/Users/alexmylnikov1/NetBeansProjects/metarepo1/";

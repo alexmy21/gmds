@@ -15,10 +15,10 @@ public interface Indexer {
     
     void index();
     
-    void index(Map<String, String> prope);
+    void index(Map<String, String> props);
     
     void reindex();
     
-    void reindex(Map<String, String> prope);
+    void reindex(Map<String, String> props);
     
 }

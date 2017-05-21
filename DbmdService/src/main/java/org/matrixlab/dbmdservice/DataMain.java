@@ -21,6 +21,7 @@ import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.TreeFormatter;
 import org.matrixlab.gmdsdriver.core.Commands;
+import org.matrixlab.jsonbuilder.impl.ObjectJson;
 
 /**
  *
@@ -34,27 +35,36 @@ public class DataMain {
     public static void main(String[] args) throws IOException, GitAPIException {
 
         Connection conn = null;
-        Repository datarepo = Commands.getRepo(Consts.DATA_REPO_PATH + ".git");                                 // (1)
+        Repository datarepo = Commands.getRepo(Consts.DATA_REPO_PATH + ".git");                             // (1)
 
-        ObjectId lastCommitId = datarepo.resolve(Constants.HEAD);                                       // (2)
+        ObjectId lastCommitId = datarepo.resolve(Constants.HEAD);                                           // (2)
         System.out.println("Last Commit: " + lastCommitId);
 
         try {
             conn = DriverManager.getConnection(URL);
 
-            TreeFormatter tree = new TreeFormatter();                                               // (3)
+            TreeFormatter tree = new TreeFormatter();                                                       // (3)
 
             if (conn != null) {
-                ObjectId treeId = Utils.dataTreeCommit(datarepo, tree, conn);                      // (4)
-                ObjectId lastTreeId = Commands.getLastCommitTreeId(datarepo, lastCommitId);                // (5)
-                ObjectId commitId = Commands.processCommit(lastCommitId, treeId, datarepo, lastTreeId);    // (6)
+                ObjectJson dbmdJson = new ObjectJson();
+                ObjectId treeId = Utils.dataTreeCommit(datarepo, tree, conn, true);                         // (4)
+                ObjectId lastTreeId = Commands.getLastCommitTreeId(datarepo, lastCommitId);                 // (5)
+                ObjectId commitId = Commands.processCommit(lastCommitId, treeId, datarepo, lastTreeId);     // (6)
                 if (commitId != null) {
-                    List<DiffEntry> list = Diffs.listDiffs(datarepo, lastTreeId, treeId);               // (7)
+                    List<DiffEntry> list = Diffs.listDiffs(datarepo, lastTreeId, treeId);                   // (7)
                     if (list != null) {
                         // Simply display the diff between the two commits
                         list.forEach((diff) -> {
+                            // TODO
+                            // Perform indexing of added to commit objects                                  // (8)
+                            
+                            // Print trace results
                             System.out.println(diff);
                         });
+                        
+                        // Index the whole commit tree                                                      // (9)
+                        
+                        System.out.print(dbmdJson.getObjectAsMap());
                     }
                 }
             } else {
