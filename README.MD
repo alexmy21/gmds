@@ -26,3 +26,11 @@ Start up main class is org.matrixlab.dbmdservice.MetaMain.
 This file is in DbmdService subproject.
 
 Let me know if you have any questions.
+
+05/24/2017
+
+Initial implementation of Elastic Search index. In order to run this release you have to have Elasticsearch 5.4 with x-pack installed. 
+This is intermediate version and it will be refactored by next release. Right now both mds and Elasticsearch indexing are in one DbmdSearvice subproject.
+In next release Elasticsearchwill be moved to EsIndexSearvice.
+
+In order to run it use MetaMain class as main class. 
