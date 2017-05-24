@@ -309,4 +309,9 @@ public class Utils {
         }
         return tree.computeId(inserter);
     }
+    
+    public static String doubleQuote(String str){
+        
+        return "\"" + str + "\"";
+    }
 }

@@ -32,4 +32,9 @@ public interface Consts {
     String COLUMN_META = "COLUMN_META";
     String COLUMN_DATA = "COLUMN_DATA";
     
+    String FILE_MODE_NAME   = "FILE_MODE_NAME";
+    String FILE_MODE_CODE   = "FILE_MODE_CODE";
+    String FILE_TYPE        = "FILE_TYPE";
+    String OBJECT_SIZE      = "OBJECT_SIZE";
+    String OBJECT_JSON      = "OBJECT_JSON";
 }

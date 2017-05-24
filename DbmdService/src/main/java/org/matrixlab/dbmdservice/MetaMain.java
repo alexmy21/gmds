@@ -29,6 +29,8 @@ public class MetaMain {
 
     private static final String database = "jdbc:derby://localhost:1527/sample";
     private static final String URL = database + ";create=true;user=app;password=app";
+    private static final String esUrl = "localhost";
+    private static final int esPort = 9200;
 
     public static void main(String[] args) throws IOException, GitAPIException {
 
@@ -48,7 +50,7 @@ public class MetaMain {
                 ObjectId treeId = Utils.metaTreeCommit(dbmdJson, repo, tree, conn, false);              // (4)
                 ObjectId lastTreeId = Commands.getLastCommitTreeId(repo, lastCommitId);                 // (5)
                 ObjectId commitId = Commands.processCommit(lastCommitId, treeId, repo, lastTreeId);     // (6)
-                
+
                 if (commitId != null) {
                     List<DiffEntry> list = Diffs.listDiffs(repo, lastTreeId, treeId);                   // (7)
                     if (list != null) {
@@ -56,14 +58,11 @@ public class MetaMain {
                         list.forEach((diff) -> {
                             // TODO
                             // Perform indexing of added to commit objects
-//                            System.out.print(dbmdJson.getObjectAsMap());                               // (8) 
-
-                            // Print trace results
-                            System.out.println(diff);
                         });
                     }
-                    // Index the whole commit tree 
-//                    System.out.print(dbmdJson.getObjectAsMap());                                        // (9)
+                    // Index the whole commit tree                                                      // (9)
+                    CommitIndex commitIndex = new CommitIndex(esUrl, esPort);
+                    commitIndex.indexCommitTree(repo);
                 }
             } else {
                 System.out.println("Metadata not supported");
@@ -80,4 +79,6 @@ public class MetaMain {
             }
         }
     }
+
+    
 }
