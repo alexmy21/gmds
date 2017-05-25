@@ -6,7 +6,6 @@
 package org.matrixlab.dbmdservice;
 
 import com.google.common.collect.Iterables;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -36,7 +35,7 @@ import org.matrixlab.jsonbuilder.impl.ObjectJson;
 public class CommitIndex {
     
     private static String esurl = "localhost";
-    private static int esport = 9300;
+    private static int esport = 9200;
 
     public CommitIndex(String esurl, int esport) {
         CommitIndex.esurl = esurl;
