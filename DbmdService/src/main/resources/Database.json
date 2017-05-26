@@ -1,0 +1,5 @@
+{
+    "DriverName": "Apache Derby Network Client JDBC Driver",
+    "DatabaseProductVersion": "10.10.2.0 - (1582446)",
+    "URL": "jdbc:derby://localhost:1527/sample;create\u003dtrue"
+}

@@ -92,7 +92,7 @@ public class EsRestIndexer implements RestIndexer {
         try {
             HttpEntity entity = new NStringEntity(json, ContentType.APPLICATION_JSON);
 
-            Response indexResponse = client.performRequest("POST", endpoint, Collections.<String, String>emptyMap(), entity);
+            Response indexResponse = client.performRequest("PUT", endpoint, Collections.<String, String>emptyMap(), entity);
 
             System.out.println(indexResponse.toString());
 

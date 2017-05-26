@@ -1,0 +1,16 @@
+{
+    "_index": "mds",
+    "_type": "local_derby",
+    "_id": "cf93b306467c481fcc8876cdb88319ef2a312747",
+    "_score": 1.1451323,
+    "_source": {
+        "TABLE_NAME": "CUSTOMER",
+        "TABLE_SCHEM": "APP",
+        "COLUMN_NAME": "CUSTOMER_ID",
+        "NULLABLE": "0",
+        "DECIMAL_DIGITS": "0",
+        "DATA_TYPE": "4",
+        "TYPE_NAME": "INTEGER",
+        "COLUMN_SIZE": "10"
+    }
+}

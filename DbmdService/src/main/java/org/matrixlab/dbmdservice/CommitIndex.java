@@ -62,7 +62,7 @@ public class CommitIndex {
         }
     }
 
-    public synchronized void indexCommitTree(final Repository repository) {
+    public void indexCommitTree(final Repository repository) {
         
         RestClient client = null;
         

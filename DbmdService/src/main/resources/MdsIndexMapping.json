@@ -1,0 +1,103 @@
+{
+    "properties": {
+        "DriverName": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "DatabaseProductVersion": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "URL": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "TABLE_NAME": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "TABLE_SCHEM": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "COLUMN_NAME": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "NULLABLE": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "DECIMAL_DIGITS": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "DATA_TYPE": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "TYPE_NAME": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "COLUMN_SIZE": {
+            "type": "text",
+            "fielddata": true,
+            "fields": {
+                "keyword": {
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "_index": "mds",
+    "_type": "local_derby",
+    "_id": "0461acfc0bacdb34a46fd639f72f93924bbfa8c7",
+    "_score": 1.13498,
+    "_source": {
+        "TABLE_NAME": "CUSTOMER"
+    }
+}
