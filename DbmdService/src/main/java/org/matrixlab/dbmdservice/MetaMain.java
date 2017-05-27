@@ -5,6 +5,7 @@
  */
 package org.matrixlab.dbmdservice;
 
+import org.matrixlab.indexservice.DbIndex;
 import org.matrixlab.dbmdservice.api.Consts;
 import org.matrixlab.dbmdservice.util.Utils;
 import java.io.IOException;
@@ -61,8 +62,8 @@ public class MetaMain {
                         });
                     }
                     // Index the whole commit tree                                                      // (9)
-                    CommitIndex commitIndex = new CommitIndex(esUrl, esPort);
-                    commitIndex.indexCommitTree(repo);
+                    DbIndex dbIndex = new DbIndex(Consts.META_REPO_PATH + ".git", esUrl, esPort);
+                    dbIndex.indexCommitTree(repo);
                 }
             } else {
                 System.out.println("Metadata not supported");
@@ -79,6 +80,4 @@ public class MetaMain {
             }
         }
     }
-
-    
 }
