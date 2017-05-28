@@ -10,7 +10,7 @@ alexmy@matrixlab.org
 
 ## Getting started
 
-- Fork the repository on GitHub
+- Fork the repository on GitHub (https://www.atlassian.com/git/tutorials/comparing-workflows)
 - Read the README.md for build instructions
 
 ## Reporting bugs and creating issues
@@ -25,7 +25,9 @@ This is a rough outline of what a contributor's workflow looks like:
 - Make commits of logical units.
 - Make sure commit messages are in the proper format (see below).
 - Push changes in a topic branch to a personal fork of the repository.
-- Submit a pull request to alexmy21/gmds. (https://help.github.com/articles/creating-a-pull-request/)
+- Submit a pull request to alexmy21/gmds. 
+    (https://help.github.com/articles/creating-a-pull-request/, 
+    https://www.atlassian.com/git/tutorials/making-a-pull-request)
 - Send email to alexmy@matrixlab.org.
 
 Thanks for contributing!
