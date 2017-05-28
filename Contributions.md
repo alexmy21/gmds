@@ -25,7 +25,7 @@ This is a rough outline of what a contributor's workflow looks like:
 - Make commits of logical units.
 - Make sure commit messages are in the proper format (see below).
 - Push changes in a topic branch to a personal fork of the repository.
-- Submit a pull request to alexmy21/gmds.
+- Submit a pull request to alexmy21/gmds. (https://help.github.com/articles/creating-a-pull-request/)
 - Send email to alexmy@matrixlab.org.
 
 Thanks for contributing!
