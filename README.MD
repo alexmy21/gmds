@@ -1,8 +1,11 @@
-This is a very first draft code for the MDS. It runs against Derby DB that comes preinstalled with NetBeans IDE. This is Maven project so it should run out of the box.
-Look at it as a reference implementation. This project solves only one task: putting db metadata into MDS installed as a single node. Distributed version will be next.
-In addition I wanted to push content from MDS to Elasticsearch for indexing and search, but I will add it later, maybe by the end of this week. Actually it is very simple, because as you will see from code, all objects that go to MDS are JSON. ElasticSearch 5.4 has graph support as well. 
 
-In order to run it, you have to create two directories: one for metadata and another for data (I want to keep meta and data separately), and to edit properties in
+
+This branch is created to perform a heavy refactoring of the master to implement a service-container architecture. 
+The configuration so far is the same as in master.
+
+In order to run it, you have to create two directories: one for metadata and another for data (I want to keep meta and data separately), 
+and to edit properties in Consts.java file. The database is still sample db in Derby database. You can use any other db, but the set of 
+metadata is very limited and include only general properties about jdbc driver, tables and columns.
 
  
 package org.matrixlab.dbmdservice.api;
