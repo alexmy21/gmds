@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.rokittech</groupId>
+        <groupId>org.matrixlab</groupId>
         <artifactId>Gmds</artifactId>
         <version>0.0.1-poc</version>
     </parent>
@@ -41,25 +41,10 @@
             <version>2.6.2</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>JsonBuilder</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>GmdsDriver</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
             <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>EsIndexService</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpasyncclient -->
         <dependency>
@@ -68,7 +53,16 @@
             <version>4.0.2</version>
             <type>jar</type>
         </dependency>
-
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>GmdsDriver</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>EsIndexService</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <name>DbmdService</name>
 </project>
