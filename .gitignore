@@ -2,3 +2,7 @@
 /DbmdService/target/
 /GmdsDriver/target/
 /ServiceCore/target/
+/BootService/target/
+/GmdsControlService/target/
+/EsQueryService/target/
+/EtcdService/target/

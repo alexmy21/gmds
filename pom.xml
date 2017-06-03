@@ -10,6 +10,10 @@
         <module>GmdsDriver</module>
         <module>EsIndexService</module>
         <module>ServiceCore</module>
+        <module>EsQueryService</module>
+        <module>BootService</module>
+        <module>EtcdService</module>
+        <module>GmdsControlService</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
