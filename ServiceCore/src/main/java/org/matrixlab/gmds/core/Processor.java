@@ -14,17 +14,12 @@
  * Apache 2 License for more details.
  *
  */
-
-package org.matrixlab.gmds.jsonbuilder.api;
+package org.matrixlab.gmds.core;
 
 /**
  *
  * @author alexmy
- * @param <S>
- * @param <T>
  */
-public interface Converter <S, T> {
-    
-    T convert(S source);
+public interface Processor {
     
 }
