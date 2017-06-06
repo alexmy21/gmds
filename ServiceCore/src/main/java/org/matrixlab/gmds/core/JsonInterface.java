@@ -14,15 +14,20 @@
  * Apache 2 License for more details.
  *
  */
-
 package org.matrixlab.gmds.core;
+
+import com.google.gson.JsonObject;
 
 /**
  *
  * @author alexmylnikov
+ * @param <O>
  */
-public interface Command {
+public interface JsonInterface <O> {
     
-    void execute();
+    JsonObject toJsonObject();
+    String toJsonString();
     
+    O fromJsonObject(JsonObject json);
+    O fromJsonString(String json);
 }

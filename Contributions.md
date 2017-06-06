@@ -30,6 +30,8 @@ This is a rough outline of what a contributor's workflow looks like:
     https://www.atlassian.com/git/tutorials/making-a-pull-request)
 - Send email to alexmy@matrixlab.org.
 
+Try to follow Google coding style guide (https://google.github.io/styleguide/javaguide.html).
+
 Thanks for contributing!
 
 

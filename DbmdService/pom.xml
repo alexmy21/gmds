@@ -54,6 +54,12 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
+            <version>3.4.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>GmdsDriver</artifactId>
             <version>${project.version}</version>
@@ -61,6 +67,11 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>EsIndexService</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ServiceCore</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

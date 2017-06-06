@@ -17,17 +17,27 @@
 
 package org.matrixlab.gdms.dbmd;
 
+import org.matrixlab.gdms.dbmd.command.Commit;
+import org.matrixlab.gdms.dbmd.command.QueryList;
+
 /**
  *
  * @author alexmy
  */
-public class MetaMain {
+public enum CommandExec {
 
-    private static final String DATABASE = "jdbc:derby://localhost:1527/sample";
-    private static final String URL = DATABASE + ";create=true;user=app;password=app";
+    COMMIT {
+                @Override
+                public void execute(DbmdProcessor processor) {
+                    new Commit(processor).run();
+                }
+            },
+    QUERYLIST {
+                @Override
+                public void execute(DbmdProcessor processor) {
+                    new QueryList(processor).run();
+                }
+            };
 
-    public static void main(String[] args){
-
-       
-    }
+    abstract public void execute(DbmdProcessor processor);
 }
