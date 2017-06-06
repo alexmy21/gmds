@@ -1,3 +1,5 @@
+package org.matrixlab.gmds.index;
+
 /*
  * Copyright 2017 Alex Mylnikov
 
@@ -14,8 +16,6 @@
  * Apache 2 License for more details.
  *
  */
-
-package org.matrixlab.gMDS.index;
 
 import com.google.common.collect.Iterables;
 import java.io.IOException;

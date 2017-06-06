@@ -15,7 +15,7 @@
  *
  */
 
-package org.matrixlab.gMDS.index;
+package org.matrixlab.gmds.index;
 
 import java.io.IOException;
 import java.util.Collections;

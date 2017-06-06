@@ -8,4 +8,14 @@
     </parent>
     <artifactId>ServiceCore</artifactId>
     <packaging>jar</packaging>
+    
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.vertx/vertx-core -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+    </dependencies>
+
 </project>

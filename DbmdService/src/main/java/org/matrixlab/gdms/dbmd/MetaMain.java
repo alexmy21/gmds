@@ -17,7 +17,7 @@
 
 package org.matrixlab.gdms.dbmd;
 
-import org.matrixlab.gMDS.index.DbIndex;
+import org.matrixlab.gmds.index.DbIndex;
 import org.matrixlab.gmds.dbmd.api.Consts;
 import org.matrixlab.gmds.dbmd.util.Utils;
 import java.io.IOException;

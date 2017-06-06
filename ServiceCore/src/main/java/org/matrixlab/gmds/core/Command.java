@@ -14,29 +14,17 @@
  * Apache 2 License for more details.
  *
  */
+
 package org.matrixlab.gmds.core;
 
-import io.vertx.core.Vertx;
-
 /**
- * The main interface in Service containers
- * @author alexmy
- * 
- * @param <I>
- * @param <O>
- * @param <P>
- * @param <S>
+ *
+ * @author alexmylnikov
  */
-public interface Processor <I, O, P, S> {
-    Processor newInstance();
-    Processor newInstance(I input, O output, P param, S persist);
+public interface Command {
     
-    Processor newInstance(Vertx vertx);
-    Processor newInstance(Vertx vertx, I input, O output, P param, S persist);
+    void execute();
     
-    O process();
-    O process(I input);
-    O process(I input, P params);
-    O process(I input, P params, S persist);
+    boolean check();
     
 }
