@@ -14,15 +14,12 @@
  * Apache 2 License for more details.
  *
  */
-
 package org.matrixlab.gmds.core;
 
 /**
  *
  * @author alexmylnikov
  */
-public interface Command {
-    
-    void execute();
-    
+public interface CommandCheck {
+    boolean check();
 }

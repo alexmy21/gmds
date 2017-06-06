@@ -16,8 +16,6 @@
  */
 package org.matrixlab.gmds.core;
 
-import io.vertx.core.Vertx;
-
 /**
  * The main interface in Service containers
  * @author alexmy
@@ -25,18 +23,20 @@ import io.vertx.core.Vertx;
  * @param <I>
  * @param <O>
  * @param <P>
- * @param <S>
  */
-public interface Processor <I, O, P, S> {
-    Processor newInstance();
-    Processor newInstance(I input, O output, P param, S persist);
+public abstract class Processor <I, O, P> {
+//    public abstract Processor newInstance();
+//    Processor newInstance(I input, O output, P param);
     
-    Processor newInstance(Vertx vertx);
-    Processor newInstance(Vertx vertx, I input, O output, P param, S persist);
+//    public abstract Processor newInstance(Vertx vertx);
+//    Processor newInstance(Vertx vertx, I input, O output, P param);
     
-    O process();
-    O process(I input);
-    O process(I input, P params);
-    O process(I input, P params, S persist);
+    public abstract O process();
+    public abstract O process(String command);
     
+    public abstract O process(I input);
+    public abstract O process(String command, I input);
+    
+    public abstract O process(I input, P params);
+    public abstract O process(String command, I input, P params);
 }

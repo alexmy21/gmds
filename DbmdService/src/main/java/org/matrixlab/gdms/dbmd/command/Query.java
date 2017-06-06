@@ -14,54 +14,62 @@
  * Apache 2 License for more details.
  *
  */
+package org.matrixlab.gdms.dbmd.command;
 
-package org.matrixlab.gdms.dbmd;
-
-import org.matrixlab.gmds.dbmd.impl.CommitDiffs;
-//import org.matrixlab.gmds.index.DbIndex;
-import org.matrixlab.gmds.dbmd.api.Consts;
-import org.matrixlab.gmds.dbmd.util.Utils;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
-import org.eclipse.jgit.api.errors.GitAPIException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.eclipse.jgit.diff.DiffEntry;
+import org.eclipse.jgit.errors.LargeObjectException;
 import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.TreeFormatter;
+import org.matrixlab.gdms.dbmd.DbmdProcessor;
+import org.matrixlab.gmds.core.CommandCheck;
+import org.matrixlab.gmds.dbmd.impl.CommitDiffs;
+import org.matrixlab.gmds.dbmd.util.Utils;
 import org.matrixlab.gmds.driver.core.Commands;
 import org.matrixlab.gmds.jsonbuilder.impl.ObjectJson;
 
 /**
  *
- * @author alexmy
+ * @author alexmylnikov
  */
-public class MetaMain {
+public class Query implements Runnable, CommandCheck {
 
-    private static final String database = "jdbc:derby://localhost:1527/sample";
-    private static final String URL = database + ";create=true;user=app;password=app";
-//    private static final String esUrl = "localhost";
-//    private static final int esPort = 9200;
+    private final DbmdProcessor processor;
 
-    public static void main(String[] args) throws IOException, GitAPIException {
+    private final String URL;
 
+    public Query(DbmdProcessor processor) {
+        this.processor = processor;
+        this.URL = processor.getInput().getURL();
+    }
+
+    @Override
+    public void run() {
         Connection conn = null;
-        Repository repo = Commands.getRepo(Consts.META_REPO_PATH + ".git");                             // (1)
-
-        ObjectId lastCommitId = repo.resolve(Constants.HEAD);                                           // (2)
-        System.out.println("Last Commit: " + lastCommitId);
-
         try {
+            Repository repo = Commands.getRepo(processor.getInput().getREPO_PATH());                             // (1)
+
+            ObjectId lastCommitId = repo.resolve(Constants.HEAD);                                           // (2)
+            System.out.println("Last Commit: " + lastCommitId);
+
             conn = DriverManager.getConnection(URL);
 
             TreeFormatter tree = new TreeFormatter();                                                   // (3)
 
             if (conn != null) {
                 ObjectJson dbmdJson = new ObjectJson();
-                ObjectId treeId = Utils.metaTreeCommit(dbmdJson, repo, tree, conn, false);              // (4)
+                ObjectId treeId;
+                
+                    treeId = Utils.metaTreeCommit(dbmdJson, repo, tree, conn, false); // (4)
+                
                 ObjectId lastTreeId = Commands.getLastCommitTreeId(repo, lastCommitId);                 // (5)
                 ObjectId commitId = Commands.processCommit(lastCommitId, treeId, repo, lastTreeId);     // (6)
 
@@ -74,15 +82,14 @@ public class MetaMain {
                             // Perform indexing of added to commit objects
                         });
                     }
-                    // Index the whole commit tree                                                      // (9)
-//                    DbIndex dbIndex = new DbIndex(Consts.META_REPO_PATH + ".git", esUrl, esPort);
-//                    dbIndex.indexCommitTree(repo);
                 }
             } else {
                 System.out.println("Metadata not supported");
             }
         } catch (SQLException ex1) {
             System.err.println(ex1);
+        } catch (LargeObjectException | IOException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (conn != null) {
@@ -93,4 +100,10 @@ public class MetaMain {
             }
         }
     }
+
+    @Override
+    public boolean check() {
+        return true;
+    }
+
 }

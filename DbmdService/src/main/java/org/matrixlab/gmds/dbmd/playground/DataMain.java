@@ -15,7 +15,7 @@
  *
  */
 
-package org.matrixlab.gdms.dbmd;
+package org.matrixlab.gmds.dbmd.playground;
 
 import org.matrixlab.gmds.dbmd.api.Consts;
 import org.matrixlab.gmds.dbmd.util.Utils;
@@ -32,6 +32,7 @@ import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.TreeFormatter;
+import org.matrixlab.gmds.dbmd.impl.CommitDiffs;
 import org.matrixlab.gmds.driver.core.Commands;
 import org.matrixlab.gmds.jsonbuilder.impl.ObjectJson;
 
@@ -63,7 +64,7 @@ public class DataMain {
                 ObjectId lastTreeId = Commands.getLastCommitTreeId(datarepo, lastCommitId);                 // (5)
                 ObjectId commitId = Commands.processCommit(lastCommitId, treeId, datarepo, lastTreeId);     // (6)
                 if (commitId != null) {
-                    List<DiffEntry> list = Diffs.listDiffs(datarepo, lastTreeId, treeId);                   // (7)
+                    List<DiffEntry> list = new CommitDiffs().listDiffs(datarepo, lastTreeId, treeId);     // (7)
                     if (list != null) {
                         // Simply display the diff between the two commits
                         list.forEach((diff) -> {

@@ -15,7 +15,7 @@
  *
  */
 
-package org.matrixlab.gdms.dbmd;
+package org.matrixlab.gmds.dbmd.playground;
 
 import org.matrixlab.gmds.dbmd.api.Consts;
 import java.io.IOException;

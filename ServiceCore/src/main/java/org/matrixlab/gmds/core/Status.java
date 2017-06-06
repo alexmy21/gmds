@@ -18,11 +18,19 @@
 package org.matrixlab.gmds.core;
 
 /**
- *
- * @author alexmylnikov
+ * Created by alexmy 
  */
-public interface Command {
-    
-    void execute();
-    
+public enum Status {
+    SUCCESS(200),
+    ERROR(400);
+
+    private int statusCode;
+
+    Status(int statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public int getStatusCode() {
+        return this.statusCode;
+    }
 }

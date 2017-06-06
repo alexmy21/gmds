@@ -1,3 +1,5 @@
+package org.matrixlab.gmds.dbmd.playground;
+
 /*
  * Copyright 2017 Alex Mylnikov
 
@@ -15,7 +17,7 @@
  *
  */
 
-package org.matrixlab.gdms.dbmd;
+
 
 import java.io.IOException;
 import java.util.Collections;
