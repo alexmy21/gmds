@@ -14,26 +14,27 @@
  * Apache 2 License for more details.
  *
  */
-package org.matrixlab.gdms.dbmd.dto;
+package org.matrixlab.gmds.dbmd.dto;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.ArrayList;
+import java.util.HashMap;
 import org.matrixlab.gmds.core.JsonInterface;
 
 /**
- * This class provides input data to retrieve objects from repository as a list
- * using provided list of object IDs.
+ * This class provides params (actually just one parameter - repo path) to access gmds repo
  *
  * @author alexmylnikov
  */
-public class InputQueryList extends ArrayList<String> implements JsonInterface <InputQueryList> {
+public class ParamsQueryList extends HashMap<String, String> implements JsonInterface <ParamsQueryList> {
 
+    public static final String REPO_PATH = "REPO_PATH";
+    
     @Override
     public JsonObject toJsonObject() {
         JsonParser parser = new JsonParser();
-        String jsonString = new Gson().toJson(this, InputQueryList.class);
+        String jsonString = new Gson().toJson(this, ParamsQueryList.class);
         JsonObject jsonObject = parser.parse(jsonString).getAsJsonObject();
         
         return jsonObject;
@@ -41,17 +42,17 @@ public class InputQueryList extends ArrayList<String> implements JsonInterface <
 
     @Override
     public String toJsonString() {
-        return new Gson().toJson(this, InputQueryList.class);
+        return new Gson().toJson(this, ParamsQueryList.class);
     }
 
     @Override
-    public InputQueryList fromJsonObject(JsonObject json) {
-        return new Gson().fromJson(json, InputQueryList.class);
+    public ParamsQueryList fromJsonObject(JsonObject json) {
+        return new Gson().fromJson(json, ParamsQueryList.class);
     }
 
     @Override
-    public InputQueryList fromJsonString(String json) {
-        return new Gson().fromJson(json, InputQueryList.class);
+    public ParamsQueryList fromJsonString(String json) {
+        return new Gson().fromJson(json, ParamsQueryList.class);
     }
 
 }

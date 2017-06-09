@@ -15,16 +15,17 @@
  *
  */
 
-package org.matrixlab.gdms.dbmd;
+package org.matrixlab.gmds.dbmd;
 
-import org.matrixlab.gdms.dbmd.command.Commit;
-import org.matrixlab.gdms.dbmd.command.QueryList;
+import org.matrixlab.gmds.dbmd.DbmdProcessor;
+import org.matrixlab.gmds.dbmd.command.Commit;
+import org.matrixlab.gmds.dbmd.command.QueryList;
 
 /**
  *
  * @author alexmy
  */
-public enum CommandExec {
+public enum CmdExecutor {
 
     COMMIT {
                 @Override

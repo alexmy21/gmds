@@ -14,24 +14,26 @@
  * Apache 2 License for more details.
  *
  */
-package org.matrixlab.gdms.dbmd.dto;
+package org.matrixlab.gmds.dbmd.dto;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.HashMap;
+import java.util.ArrayList;
 import org.matrixlab.gmds.core.JsonInterface;
 
 /**
+ * This class provides input data to retrieve objects from repository as a list
+ * using provided list of object IDs.
  *
  * @author alexmylnikov
  */
-public class InputCommit extends HashMap<String, String> implements JsonInterface<InputCommit>{
+public class InputQueryList extends ArrayList<String> implements JsonInterface <InputQueryList> {
 
     @Override
     public JsonObject toJsonObject() {
         JsonParser parser = new JsonParser();
-        String jsonString = new Gson().toJson(this, InputCommit.class);
+        String jsonString = new Gson().toJson(this, InputQueryList.class);
         JsonObject jsonObject = parser.parse(jsonString).getAsJsonObject();
         
         return jsonObject;
@@ -39,16 +41,17 @@ public class InputCommit extends HashMap<String, String> implements JsonInterfac
 
     @Override
     public String toJsonString() {
-        return new Gson().toJson(this, InputCommit.class);
+        return new Gson().toJson(this, InputQueryList.class);
     }
 
     @Override
-    public InputCommit fromJsonObject(JsonObject json) {
-        return new Gson().fromJson(json, InputCommit.class);
+    public InputQueryList fromJsonObject(JsonObject json) {
+        return new Gson().fromJson(json, InputQueryList.class);
     }
 
     @Override
-    public InputCommit fromJsonString(String json) {
-        return new Gson().fromJson(json, InputCommit.class);
+    public InputQueryList fromJsonString(String json) {
+        return new Gson().fromJson(json, InputQueryList.class);
     }
+
 }

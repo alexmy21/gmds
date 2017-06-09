@@ -14,12 +14,12 @@
  * Apache 2 License for more details.
  *
  */
-package org.matrixlab.gdms.dbmd.command;
+package org.matrixlab.gmds.dbmd.command;
 
 import java.util.List;
-import org.matrixlab.gdms.dbmd.DbmdProcessor;
-import org.matrixlab.gdms.dbmd.dto.InputQueryList;
-import org.matrixlab.gdms.dbmd.dto.ParamsQueryList;
+import org.matrixlab.gmds.dbmd.DbmdProcessor;
+import org.matrixlab.gmds.dbmd.dto.InputQueryList;
+import org.matrixlab.gmds.dbmd.dto.ParamsQueryList;
 import org.matrixlab.gmds.core.CommandCheck;
 
 /**

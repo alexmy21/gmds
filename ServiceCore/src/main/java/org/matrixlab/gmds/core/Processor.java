@@ -16,6 +16,8 @@
  */
 package org.matrixlab.gmds.core;
 
+import io.vertx.core.Vertx;
+
 /**
  * The main interface in Service containers
  * @author alexmy
@@ -23,13 +25,24 @@ package org.matrixlab.gmds.core;
  * @param <I>
  * @param <O>
  * @param <P>
+ * @param <S>
  */
-public abstract class Processor <I, O, P> {
-//    public abstract Processor newInstance();
-//    Processor newInstance(I input, O output, P param);
+public abstract class Processor <I, O, P, S> {
+
+    I input;
+    O output;
+    P params;
+    S persist;
     
-//    public abstract Processor newInstance(Vertx vertx);
-//    Processor newInstance(Vertx vertx, I input, O output, P param);
+    String command;
+    Vertx vertx;
+    
+    public abstract Processor newInstance();
+    public abstract Processor newInstance(I input, O output, P param);
+    
+    // Special case of new Instance for Vertx
+    public abstract Processor newInstance(Vertx vertx);
+    public abstract Processor newInstance(Vertx vertx, I input, O output, P param);
     
     public abstract O process();
     public abstract O process(String command);
@@ -39,4 +52,74 @@ public abstract class Processor <I, O, P> {
     
     public abstract O process(I input, P params);
     public abstract O process(String command, I input, P params);
+    
+    
+    /**
+     * @return the input
+     */
+    public abstract I getInput();
+
+    /**
+     * @param input the input to set
+     */
+    public abstract void setInput(I input);
+
+    /**
+     * @return the output
+     */
+    public abstract O getOutput();
+
+    /**
+     * @param output the output to set
+     */
+    public abstract void setOutput(O output);
+
+    /**
+     * @return the param
+     */
+    public abstract P getParams();
+
+    /**
+     * @param param the param to set
+     */
+    public abstract void setParams(P param);
+
+    
+    /**
+     * @return the persist
+     */
+    public abstract S getPersist();
+
+    /**
+     * @param persist the persist to set
+     */
+    public abstract void setPersist(S persist);
+
+    /**
+     * @return the command
+     */
+    public String getCommand() {
+        return command;
+    }
+
+    /**
+     * @param command the command to set
+     */
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    /**
+     * @return the vertx
+     */
+    public Vertx getVertx() {
+        return vertx;
+    }
+
+    /**
+     * @param vertx the vertx to set
+     */
+    public void setVertx(Vertx vertx) {
+        this.vertx = vertx;
+    }
 }

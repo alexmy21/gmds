@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.matrixlab.gdms.dbmd;
+package org.matrixlab.gmds.dbmd;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.RoutingContext;
 import java.util.Map;
-import org.matrixlab.gdms.dbmd.dto.Output;
+import org.matrixlab.gmds.dbmd.DbmdProcessor;
+import org.matrixlab.gmds.dbmd.dto.Output;
 import org.matrixlab.gmds.core.Constants;
 import org.matrixlab.gmds.core.PersistUtils;
 import org.matrixlab.gmds.core.Processor;
@@ -23,11 +24,9 @@ import org.matrixlab.gmds.core.Status;
 public class DbmdController extends AbstractVerticle {
     
     String command;
-    Map<String, String> params;
 
-    public DbmdController(Vertx vertx, Map<String, String> params) {
+    public DbmdController(Vertx vertx) {
         this.vertx = vertx;
-        this.params = params;
     }
     
     public void process(RoutingContext routingContext) {
@@ -41,18 +40,14 @@ public class DbmdController extends AbstractVerticle {
             response.setStatusCode(Status.ERROR.getStatusCode());
             response.putHeader(Constants.contentTypeName, Constants.contentTypeValue).end("Invalid request");
         } else {
-            params.put(Constants.command, command);
-            Processor processor = DbmdProcessor.newInstance(this.vertx);
+            Processor processor = new DbmdProcessor().newInstance(this.vertx);
             String result;
             if ((null != requestJson) && !requestJson.isEmpty()) {
                 setInput(processor, requestJson, command);
-                Output output = (Output) processor.process(command);
-                result = output.toJsonString();
+                Output output = (Output) processor.process();
+                
+                result = output.toJsonString() == null? "No data" : output.toJsonString();
             } else {
-                result = "No data";
-            }
-
-            if (result == null) {
                 result = "No data";
             }
 
@@ -61,6 +56,7 @@ public class DbmdController extends AbstractVerticle {
     }
    
     private void setInput(Processor processor, String json, String command){
-        
+        processor.setInput(json);
+        processor.setCommand(command);
     }
 }

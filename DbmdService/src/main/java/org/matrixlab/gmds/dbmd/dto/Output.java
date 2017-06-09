@@ -14,7 +14,7 @@
  * Apache 2 License for more details.
  *
  */
-package org.matrixlab.gdms.dbmd.dto;
+package org.matrixlab.gmds.dbmd.dto;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -23,18 +23,17 @@ import java.util.HashMap;
 import org.matrixlab.gmds.core.JsonInterface;
 
 /**
- * This class provides params (actually just one parameter - repo path) to access gmds repo
  *
  * @author alexmylnikov
  */
-public class ParamsQueryList extends HashMap<String, String> implements JsonInterface <ParamsQueryList> {
-
-    public static final String REPO_PATH = "REPO_PATH";
+public class Output extends HashMap<String, Object> implements JsonInterface<Output> {
     
+    public static final String RESULT = "RESULT";
+
     @Override
     public JsonObject toJsonObject() {
         JsonParser parser = new JsonParser();
-        String jsonString = new Gson().toJson(this, ParamsQueryList.class);
+        String jsonString = new Gson().toJson(this, Output.class);
         JsonObject jsonObject = parser.parse(jsonString).getAsJsonObject();
         
         return jsonObject;
@@ -42,17 +41,16 @@ public class ParamsQueryList extends HashMap<String, String> implements JsonInte
 
     @Override
     public String toJsonString() {
-        return new Gson().toJson(this, ParamsQueryList.class);
+        return new Gson().toJson(this, InputQueryList.class);
     }
 
     @Override
-    public ParamsQueryList fromJsonObject(JsonObject json) {
-        return new Gson().fromJson(json, ParamsQueryList.class);
+    public Output fromJsonObject(JsonObject json) {
+        return new Gson().fromJson(json, Output.class);
     }
 
     @Override
-    public ParamsQueryList fromJsonString(String json) {
-        return new Gson().fromJson(json, ParamsQueryList.class);
+    public Output fromJsonString(String json) {
+        return new Gson().fromJson(json, Output.class);
     }
-
 }

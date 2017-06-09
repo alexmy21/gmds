@@ -14,7 +14,7 @@
  * Apache 2 License for more details.
  *
  */
-package org.matrixlab.gdms.dbmd.command;
+package org.matrixlab.gmds.dbmd.command;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -29,8 +29,8 @@ import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.TreeFormatter;
-import org.matrixlab.gdms.dbmd.DbmdProcessor;
-import org.matrixlab.gdms.dbmd.dto.ParamsCommit;
+import org.matrixlab.gmds.dbmd.DbmdProcessor;
+import org.matrixlab.gmds.dbmd.dto.ParamsCommit;
 import org.matrixlab.gmds.core.CommandCheck;
 import org.matrixlab.gmds.dbmd.impl.CommitDiffs;
 import org.matrixlab.gmds.dbmd.util.Utils;
