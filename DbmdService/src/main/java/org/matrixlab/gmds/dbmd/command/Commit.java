@@ -29,9 +29,9 @@ import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.TreeFormatter;
+import org.matrixlab.gmds.core.Command;
 import org.matrixlab.gmds.dbmd.DbmdProcessor;
 import org.matrixlab.gmds.dbmd.dto.ParamsCommit;
-import org.matrixlab.gmds.core.CommandCheck;
 import org.matrixlab.gmds.dbmd.impl.CommitDiffs;
 import org.matrixlab.gmds.dbmd.util.Utils;
 import org.matrixlab.gmds.driver.core.Commands;
@@ -41,7 +41,7 @@ import org.matrixlab.gmds.jsonbuilder.impl.ObjectJson;
  *
  * @author alexmylnikov
  */
-public class Commit implements Runnable, CommandCheck {
+public class Commit implements Command {
 
     private final DbmdProcessor processor;
 

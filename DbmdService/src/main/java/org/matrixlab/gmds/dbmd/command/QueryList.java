@@ -17,16 +17,16 @@
 package org.matrixlab.gmds.dbmd.command;
 
 import java.util.List;
+import org.matrixlab.gmds.core.Command;
 import org.matrixlab.gmds.dbmd.DbmdProcessor;
 import org.matrixlab.gmds.dbmd.dto.InputQueryList;
 import org.matrixlab.gmds.dbmd.dto.ParamsQueryList;
-import org.matrixlab.gmds.core.CommandCheck;
 
 /**
  *
  * @author alexmylnikov
  */
-public class QueryList implements Runnable, CommandCheck {
+public class QueryList implements Command {
 
     private final DbmdProcessor processor;
 

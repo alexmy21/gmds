@@ -21,8 +21,6 @@ package org.matrixlab.gmds.core;
  *
  * @author alexmylnikov
  */
-public interface Command {
-    
-    void execute();
+public interface Command extends CommandCheck, Runnable {
     
 }

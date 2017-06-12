@@ -59,6 +59,8 @@
             <version>3.4.1</version>
             <type>jar</type>
         </dependency>
+        
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>GmdsDriver</artifactId>
@@ -73,6 +75,12 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>ServiceCore</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.11.1.1</version>
         </dependency>
     </dependencies>
     <name>DbmdService</name>

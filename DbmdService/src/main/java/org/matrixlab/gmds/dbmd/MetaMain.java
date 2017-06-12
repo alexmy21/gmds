@@ -30,7 +30,7 @@ public class MetaMain {
     private static final String URL = DATABASE + ";create=true;user=app;password=app";
     public static final String REPO_PATH = Consts.META_REPO_PATH + ".git";
 
-    private static final String JSON = "{\"URL\":" + URL + "," + "\"REPO_PATH\":" + REPO_PATH;
+    private static final String JSON = "{\"URL\":\"" + URL + "\"," + "\"REPO_PATH\":\"" + REPO_PATH + "\"}";
 
     public static void main(String[] args) {
 
@@ -40,8 +40,8 @@ public class MetaMain {
         setInput(processor, JSON, "COMMIT");
         Output output = (Output) processor.process();
 
-        result = output.toJsonString() == null ? "No data" : output.toJsonString();
-        System.out.println("RESULT: " + result);
+//        result = output.toJsonString() == null ? "No data" : output.toJsonString();
+//        System.out.println("RESULT: " + result);
     }
 
     private static void setInput(Processor processor, String json, String command) {
