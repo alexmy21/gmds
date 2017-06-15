@@ -16,6 +16,7 @@
  */
 package org.matrixlab.gmds.dbmd.command;
 
+import io.vertx.core.AbstractVerticle;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -41,44 +42,42 @@ import org.matrixlab.gmds.jsonbuilder.impl.ObjectJson;
  *
  * @author alexmylnikov
  */
-public class Commit implements Command {
+public class Commit extends AbstractVerticle implements Command {
 
-    private final DbmdProcessor processor;
-
-    private final String URL;
-    private final String REPO_PATH;
+//    private final DbmdProcessor processor;
+    private final String url;
+    private final String repoPath;
+    
+    Connection conn = null;
 
     public Commit(DbmdProcessor processor) {
-        this.processor = processor;
+//        this.processor = processor;
         ParamsCommit paramsCommit = new ParamsCommit().fromJsonString(processor.getInput());
-        this.URL = paramsCommit.get(ParamsCommit.URL);
-        this.REPO_PATH = paramsCommit.get(ParamsCommit.REPO_PATH);
+        this.url        = paramsCommit.get(ParamsCommit.URL);
+        this.repoPath   = paramsCommit.get(ParamsCommit.REPO_PATH);
     }
 
     @Override
     public void run() {
-        Connection conn = null;
+
         try {
-            Repository repo = Commands.getRepo(REPO_PATH);                             // (1)
-
-            ObjectId lastCommitId = repo.resolve(Constants.HEAD);                                           // (2)
+            Repository repo = Commands.getRepo(repoPath);                                               // (1)
+            ObjectId lastCommitId = repo.resolve(Constants.HEAD);                                       // (2)
             System.out.println("Last Commit: " + lastCommitId);
-
-            conn = DriverManager.getConnection(URL);
-
+            conn = DriverManager.getConnection(url);
             TreeFormatter tree = new TreeFormatter();                                                   // (3)
 
             if (conn != null) {
                 ObjectJson dbmdJson = new ObjectJson();
                 ObjectId treeId;
-                
-                    treeId = Utils.metaTreeCommit(dbmdJson, repo, tree, conn, false); // (4)
-                
+
+                treeId = Utils.metaTreeCommit(dbmdJson, repo, tree, conn, false);                       // (4)
+
                 ObjectId lastTreeId = Commands.getLastCommitTreeId(repo, lastCommitId);                 // (5)
-                ObjectId commitId = Commands.processCommit(lastCommitId, treeId, repo, lastTreeId);     // (6)
+                ObjectId commitId   = Commands.processCommit(lastCommitId, treeId, repo, lastTreeId);     // (6)
 
                 if (commitId != null) {
-                    List<DiffEntry> list = new CommitDiffs().listDiffs(repo, lastTreeId, treeId);     // (7)
+                    List<DiffEntry> list = new CommitDiffs().listDiffs(repo, lastTreeId, treeId);       // (7)
                     if (list != null) {
                         // Simply display the diff between the two commits
                         list.forEach((diff) -> {
@@ -95,13 +94,7 @@ public class Commit implements Command {
         } catch (LargeObjectException | IOException ex) {
             Logger.getLogger(Commit.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex2) {
-                System.out.println(ex2.getMessage());
-            }
+            closeConn(conn);
         }
     }
 
@@ -110,4 +103,19 @@ public class Commit implements Command {
         return true;
     }
 
+    @Override
+    public void stop() {
+        closeConn(conn);
+    }
+    
+    private void closeConn(Connection conn) {
+        try {
+            if (conn != null) {
+                conn.close();
+                System.out.println("======> Connection closed!");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }

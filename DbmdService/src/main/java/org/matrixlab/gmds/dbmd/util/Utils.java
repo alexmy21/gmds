@@ -83,7 +83,9 @@ public class Utils {
      * @throws SQLException
      * @throws IOException
      */
-    public static ObjectId dataTreeCommit(Repository datarepo, TreeFormatter tree, Connection conn, Boolean clmnTree) throws SQLException, IOException {
+    public static ObjectId dataTreeCommit(Repository datarepo, TreeFormatter tree, 
+            Connection conn, Boolean clmnTree) throws SQLException, IOException {
+        
         DatabaseMetaData dbmd = conn.getMetaData();
 //        ObjectJson dbmdJson = new ObjectJson();
         String mapString = metaDbInfo(dbmd);
@@ -137,8 +139,8 @@ public class Utils {
      * @param clmnTree
      * @return
      */
-    public static TreeFormatter putTableMeta(Repository repo, Connection conn,
-            DatabaseMetaData dbmd, ObjectInserter objectInserter, TreeFormatter dbMetaTree, Boolean clmnTree) {
+    public static TreeFormatter putTableMeta(Repository repo, Connection conn, DatabaseMetaData dbmd, 
+            ObjectInserter objectInserter, TreeFormatter dbMetaTree, Boolean clmnTree) {
 
         String[] types = {"TABLE"};
 
@@ -234,7 +236,8 @@ public class Utils {
      * @throws IOException 
      */
     public static ObjectId putColumnMetaAsObject(ResultSet columns, 
-            ObjectInserter objectInserter, TreeFormatter tblTree, RevWalk walkTbl) throws SQLException, IOException {
+            ObjectInserter objectInserter, TreeFormatter tblTree, RevWalk walkTbl) 
+            throws SQLException, IOException {
 
         // Build object for column attributs
         ObjectId objectId = buildMetaObject(columns, Consts.COLUMN_META_ATTRIBUTES, objectInserter);
@@ -262,7 +265,8 @@ public class Utils {
      * @throws IOException
      */
     public static ObjectId putColumnMetaAsTree(ResultSet columns, 
-            ObjectInserter objectInserter, TreeFormatter tblTree, RevWalk walkTbl) throws SQLException, IOException {
+            ObjectInserter objectInserter, TreeFormatter tblTree, RevWalk walkTbl) 
+            throws SQLException, IOException {
 
         // Add tree for the column Metadata
         TreeFormatter clmnMetaTree = new TreeFormatter();
@@ -285,7 +289,8 @@ public class Utils {
         return clmnMetaTreeId;
     }
 
-    private static ObjectId buildMetaObject(ResultSet set, String[] attrs, ObjectInserter inserter) throws IOException, SQLException {
+    private static ObjectId buildMetaObject(ResultSet set, String[] attrs, ObjectInserter inserter) 
+            throws IOException, SQLException {
 
         ObjectJson objectJson = new ObjectJson();
         
@@ -299,12 +304,11 @@ public class Utils {
         
         System.out.println("MetaObject: " + attrJson);
         
-//        commitJson.addDoc(Consts.OBJECT_ID, objectId);
-
         return objectId;
     }
 
-    private static ObjectId buildMetaTree(ResultSet set, String[] attrs, ObjectInserter inserter, TreeFormatter tree) throws IOException, SQLException {
+    private static ObjectId buildMetaTree(ResultSet set, String[] attrs, ObjectInserter inserter, TreeFormatter tree) 
+            throws IOException, SQLException {
         
         for (String attr : attrs) {
             ObjectJson objectJson = new ObjectJson();
@@ -315,7 +319,6 @@ public class Utils {
             inserter.flush();
             
             System.out.println("MetaObject: " + attrJson);
-//            commitJson.addDoc(Consts.OBJECT_ID, objectId);
 
             tree.append(attr, FileMode.REGULAR_FILE, objectId);
         }

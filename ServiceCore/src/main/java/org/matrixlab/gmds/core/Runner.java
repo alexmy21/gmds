@@ -1,6 +1,12 @@
 /*
  * Copyright 2017 Alex Mylnikov
 
+   This program is a modified version of the Runner program
+
+https://github.com/vert-x3/vertx-examples/blob/master/unit-examples/src/test/java/io/vertx/example/unit/util/Runner.java
+
+   Code of this program is adjusted for the Gmds project.
+
  * This program is a free software: you can redistribute it and/or modify
  * it under the terms of the Apache License, Version 2.0 (the "License");
  * 

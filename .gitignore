@@ -6,3 +6,6 @@
 /GmdsControlService/target/
 /EsQueryService/target/
 /EtcdService/target/
+/KafkaStreamService/target/
+/KafkaSourceService/target/
+/KafkaSinkService/target/

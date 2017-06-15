@@ -15,7 +15,7 @@
  *
  */
 
-package org.matrixlab.gmds.dbmd.api;
+package org.matrixlab.gmds.index.api;
 
 /**
  *

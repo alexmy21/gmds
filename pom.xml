@@ -14,6 +14,9 @@
         <module>BootService</module>
         <module>EtcdService</module>
         <module>GmdsControlService</module>
+        <module>KafkaSourceService</module>
+        <module>KafkaSinkService</module>
+        <module>KafkaStreamService</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

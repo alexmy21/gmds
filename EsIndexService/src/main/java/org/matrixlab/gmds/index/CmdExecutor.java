@@ -15,10 +15,11 @@
  *
  */
 
-package org.matrixlab.gmds.dbmd;
+package org.matrixlab.gmds.index;
 
-import org.matrixlab.gmds.dbmd.command.Commit;
-import org.matrixlab.gmds.dbmd.command.QueryList;
+import org.matrixlab.gmds.index.command.IndexRest;
+import org.matrixlab.gmds.index.command.QueryRest;
+
 
 /**
  *
@@ -26,18 +27,18 @@ import org.matrixlab.gmds.dbmd.command.QueryList;
  */
 public enum CmdExecutor {
 
-    COMMIT {
+    INDEX_REST {
                 @Override
-                public void execute(DbmdProcessor processor) {
-                    new Commit(processor).run();
+                public void execute(IndexProcessor processor) {
+                    new IndexRest(processor).run();
                 }
             },
-    QUERYLIST {
+    QUERY {
                 @Override
-                public void execute(DbmdProcessor processor) {
-                    new QueryList(processor).run();
+                public void execute(IndexProcessor processor) {
+                    new QueryRest(processor).run();
                 }
             };
 
-    abstract public void execute(DbmdProcessor processor);
+    abstract public void execute(IndexProcessor processor);
 }

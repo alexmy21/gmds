@@ -15,30 +15,30 @@
  *
  */
 
-package org.matrixlab.gmds.dbmd;
+package org.matrixlab.gmds.index;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.RoutingContext;
-import org.matrixlab.gmds.dbmd.dto.Output;
 import org.matrixlab.gmds.core.Constants;
 import org.matrixlab.gmds.core.PersistUtils;
 import org.matrixlab.gmds.core.Processor;
 import org.matrixlab.gmds.core.Status;
+import org.matrixlab.gmds.index.dto.Output;
 
 /**
  *
  * @author alexmy
  */
-public class DbmdController extends AbstractVerticle {
+public class IndexController extends AbstractVerticle {
     
     String command;
 
-    public DbmdController() {
+    public IndexController() {
     }
     
-    public DbmdController(Vertx vertx) {
+    public IndexController(Vertx vertx) {
         this.vertx = vertx;
     }
     
@@ -53,7 +53,7 @@ public class DbmdController extends AbstractVerticle {
             response.setStatusCode(Status.ERROR.getStatusCode());
             response.putHeader(Constants.contentTypeName, Constants.contentTypeValue).end("Invalid request");
         } else {
-            Processor processor = new DbmdProcessor().newInstance();
+            Processor processor = new IndexProcessor().newInstance();
             String result;
             if ((null != requestJson) && !requestJson.isEmpty()) {
                 setInput(processor, requestJson, command);

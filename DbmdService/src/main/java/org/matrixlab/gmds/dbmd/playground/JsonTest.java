@@ -47,9 +47,6 @@ public class JsonTest {
         
         Connection conn = null;
         
-//        DriverManager.registerDriver(new org.apache.derby.jdbc..EmbeddedDriver());
-
-        
         conn = DriverManager.getConnection(URL);
     }
     
