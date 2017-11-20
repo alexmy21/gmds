@@ -43,6 +43,6 @@ In next release Elasticsearchwill be moved to EsIndexService.
 
 In order to run it use MetaMain class as main class. 
 
-Note that some addition information about project can be found in the following document:
+Note that some additional information about project can be found in the following document:
 
 https://docs.google.com/document/d/1SJX8SvTRadimrvOLJF4R3k-zR-rsz2rcIQq183jc_Lk/edit#
